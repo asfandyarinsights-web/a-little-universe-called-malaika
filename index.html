@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b20">
+<title>A Little Universe Called Malaika</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="flash" aria-hidden="true"></div>
+<button id="sound" class="chip" type="button" aria-pressed="false">Sound off</button>
+
+<main>
+  <!-- Scene 1: the mysterious beginning -->
+  <section class="scene" id="s0">
+    <div class="wrap">
+      <p class="lead" data-cfg="intro.line"></p>
+      <button id="enter" class="glow" type="button" data-cfg="intro.button"></button>
+    </div>
+  </section>
+
+  <!-- Scene 2: a little magic -->
+  <section class="scene" id="s1" hidden>
+    <canvas id="cStars" tabindex="0" role="application"
+      aria-label="Starfield. Touch a bright star, or press Enter, to reveal a message."></canvas>
+    <div class="dock">
+      <p id="starHint" class="hint"></p>
+      <p id="starMsg" class="msg" aria-live="polite"></p>
+      <button id="toGarden" class="glow" type="button" hidden data-cfg="stars.next"></button>
+    </div>
+  </section>
+
+  <!-- Scene 3: the secret garden -->
+  <section class="scene" id="s2" hidden>
+    <canvas id="cGarden" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p id="gHint" class="hint"></p>
+      <button id="rose" type="button" aria-label="Touch the rose" aria-pressed="false">
+        <svg viewBox="-100 -150 200 300" aria-hidden="true">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="85%" r="90%"><stop offset="0" stop-color="#ff9ec0"/><stop offset="1" stop-color="#d6366f"/></radialGradient>
+            <radialGradient id="g2" cx="50%" cy="85%" r="90%"><stop offset="0" stop-color="#ff7aa8"/><stop offset="1" stop-color="#9c2a65"/></radialGradient>
+            <radialGradient id="g3" cx="50%" cy="85%" r="90%"><stop offset="0" stop-color="#ffc2d6"/><stop offset="1" stop-color="#e0457f"/></radialGradient>
+          </defs>
+          <path class="stem" d="M0 20C-6 70 6 110 0 150"/>
+          <path class="leaf" d="M0 95C-40 70 -60 90 -62 100C-40 112 -12 108 0 95Z"/>
+          <path class="leaf" d="M0 70C38 48 58 62 60 72C40 86 12 84 0 70Z"/>
+          <g id="head" class="head"></g>
+        </svg>
+      </button>
+      <p id="gMsg" class="msg big" aria-live="polite"></p>
+      <button id="toMemory" class="glow" type="button" hidden data-cfg="garden.next"></button>
+    </div>
+  </section>
+
+  <!-- Scene 4: a little memory of you -->
+  <section class="scene" id="s3" hidden>
+    <div class="wrap wide">
+      <h2 class="title" data-cfg="memory.title"></h2>
+      <p class="hint" data-cfg="memory.hint"></p>
+      <div id="cards" class="cards"></div>
+      <button id="toHeart" class="glow" type="button" hidden data-cfg="memory.next"></button>
+    </div>
+  </section>
+
+  <!-- Scene 5: little pictures -->
+  <section class="scene" id="sg" hidden>
+    <div class="wrap wide">
+      <h2 class="title" data-cfg="gallery.title"></h2>
+      <p class="hint" data-cfg="gallery.hint"></p>
+      <div id="polas" class="polas"></div>
+      <button id="toHeartG" class="glow" type="button" hidden data-cfg="gallery.next"></button>
+    </div>
+  </section>
+
+  <!-- Scene 6: the interactive heart -->
+  <section class="scene" id="s4" hidden>
+    <div class="wrap">
+      <p id="hHint" class="hint"></p>
+      <canvas id="cHeart" tabindex="0" role="button"
+        aria-label="Interactive heart made of glowing particles. Press Enter to release a burst of stars."></canvas>
+      <p id="hMsg" class="msg big" aria-live="polite"></p>
+      <button id="toFinale" class="glow" type="button" hidden data-cfg="heart.next"></button>
+    </div>
+  </section>
+
+  <!-- Scene 6: the final reveal -->
+  <section class="scene fin" id="s5" hidden>
+    <div class="wrap">
+      <h1 id="fName" class="name"></h1>
+      <p id="fSub" class="sub reveal" data-cfg="finale.subtitle"></p>
+      <article id="letter" class="letter reveal"></article>
+      <p id="fClose" class="closing reveal" data-cfg="finale.closing"></p>
+      <button id="replay" class="glow reveal" type="button" data-cfg="finale.replay"></button>
+    </div>
+    <button id="skip" class="chip skip" type="button" hidden>Skip animation</button>
+  </section>
+</main>
+
+<nav id="progress" aria-label="Progress"><ol></ol><span id="pLabel" class="sr"></span></nav>
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;color:#fff;background:#05060f;font-family:Georgia,serif;padding:2rem;text-align:center">This little universe needs JavaScript to come to life.</p></noscript>
+<script src="script.js"></script>
+</body>
+</html>
